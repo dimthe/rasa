@@ -664,6 +664,8 @@ def test_load_model(rasa_app, trained_core_model):
 
 
 def test_load_model_from_model_server(rasa_app, trained_core_model):
+    import rasa.core.jobs
+
     _, response = rasa_app.get("/status")
 
     assert response.status == 200
@@ -693,6 +695,8 @@ def test_load_model_from_model_server(rasa_app, trained_core_model):
             assert "fingerprint" in response.json
 
             assert old_fingerprint != response.json["fingerprint"]
+
+    rasa.core.jobs.__scheduler = None
 
 
 def test_load_model_invalid_request_body(rasa_app):
