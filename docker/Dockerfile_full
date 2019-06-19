@@ -1,4 +1,4 @@
-FROM python:3.6-slim as builder
+FROM python:3.6-slim 
 # if this installation process changes, the enterprise container needs to be
 # updated as well
 WORKDIR /build
